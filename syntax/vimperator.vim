@@ -1,12 +1,13 @@
 " Vim syntax file
 " Language:         VIMperator configuration file
-" Maintainer:       Doug Kearns <dougkearns@gmail.com>
-" Last Change:      2009 Nov 14
+" Author:           Doug Kearns <dougkearns@gmail.com>
+" Maintainer:       timss <timsateroy@gmail.com>
+" Last Change:      2016 March 18
 
 " TODO: make this vimperator specific - shared liberator config?
 
 if exists("b:current_syntax")
-  finish
+    finish
 endif
 
 let s:cpo_save = &cpo
@@ -51,22 +52,25 @@ syn match vimperatorAutoEventList "\(\a\+,\)*\a\+" contained contains=vimperator
 syn region vimperatorSet matchgroup=vimperatorCommand start="\%(^\s*:\=\)\@<=\<\%(setl\%[ocal]\|setg\%[lobal]\|set\=\)\=\>"
     \ end="$" keepend oneline contains=vimperatorOption,vimperatorString
 
-syn keyword vimperatorOption ac act activate animations autocomplete cd cdpath complete cpt defsearch ds editor eht ei enc encoding
-    \ eventignore extendedhinttags fenc fileencoding fh followhints go guioptions helpfile hf hi hin hintinputs hintmatching hinttags
-    \ hinttimeout history hm ht hto maxitems messages msgs newtab nextpattern pa pageinfo popups pps previouspattern
-    \ rtp runtimepath si sanitizeitems sts sanitizetimespan scr scroll scrollbars sh shcf shell shellcmdflag showstatuslinks 
-    \ stal status suggestengines titlestring toolbars urlseparator vbs verbose wildmode wim
-    \ wordseparators wsp
+" string/number options
+syn keyword vimperatorOption ac act activate autocomplete cd cdpath complete cpt defsearch ds editor eht ei enc
+    \ encoding eventignore extendedhinttags fenc fh fileencoding followhints go gui hc helpfile hf hi hin hintchars
+    \ hintinputs hintmatching hinttags hinttimeout history hm ht hto maxitems messages messagetimeout msgs mto newtab nextpattern
+    \ pa pageinfo passthrough popups pps previouspattern rtp runtimepath sanitizeitems sanitizetimespan scr scroll sh shcf shell
+    \ shellcmdflag showstatuslinks si slv smallicons stal status statuslinevisibility sts suggestengines tabnumbers titlestring
+    \ tn toolbars urlseparator vbs verbose wildmode wim wordseparators wsp yankencodedurl
     \ contained nextgroup=vimperatorSetMod
 
 " toggle options
-syn match vimperatorOption "\<\%(no\|inv\)\=\%(errorbells\|eb\|exrc\|ex\|focuscontent\|fc\|fullscreen\|fs\|ignorecase\|ic\)\>!\="
+syn match vimperatorOption "\<\%(no\|inv\)\=\%(animations\|ani\|apptab\|app\|autocomplete\|ac\|errorbells\|eb\|exrc\|ex\)\>!\="
     \ contained nextgroup=vimperatorSetMod
-syn match vimperatorOption "\<\%(no\|inv\)\=\%(incsearch\|is\|insertmode\|im\|hlsearch\|hls\|linksearch\|lks\)\>!\="
+syn match vimperatorOption "\<\%(no\|inv\)\=\%(focuscontent\|fc\|fullscreen\|fs\|hlsearch\|hls\|ignorecase\|ic\)\>!\="
     \ contained nextgroup=vimperatorSetMod
-syn match vimperatorOption "\<\%(no\|inv\)\=\%(loadplugins\|lpl\|more\|online\|private\|showmode\|smd\|smartcase\|scs\)\>!\="
+syn match vimperatorOption "\<\%(no\|inv\)\=\%(incsearch\|is\ insertmode\|im\|linksearch\|lks\|loadplugins\|lpl\|online\)\>!\="
     \ contained nextgroup=vimperatorSetMod
-syn match vimperatorOption "\<\%(no\|inv\)\=\%(online\|scrollbars\|visualbell\|vb\|usermode\|um\)\>!\="
+syn match vimperatorOption "\<\%(no\|inv\)\=\%(passthrough\|scrollbars\|sb\|showmode\|smd\|smallicons\|si\|smartcase\|scs\)\>!\="
+    \ contained nextgroup=vimperatorSetMod
+syn match vimperatorOption "\<\%(no\|inv\)\=\%(tabnumbers\|tn\|usermode\|um\|visualbell\|vb\|yankencodedurl\)\>!\="
     \ contained nextgroup=vimperatorSetMod
 
 syn match vimperatorSetMod "\%(\<[a-z_]\+\)\@<=&" contained
