@@ -74,9 +74,9 @@ syn match vimperatorOption "\<\%(no\|inv\)\=\%(tabnumbers\|tn\|usermode\|um\|vis
 
 syn match vimperatorSetMod "\%(\<[a-z_]\+\)\@<=&" contained
 
-syn region vimperatorJavaScript start="\%(^\s*\%(javascript\|js\)\s\+\)\@<=" end="$" contains=@javascriptTop keepend oneline
+syn region vimperatorJavaScript start="\%(^\s*:\=\%(au\%(tocmd\)\=\s\+.\+\s\+-\=\)\=\%(javascript\|js\)\s\+\)\@<=" end="$" contains=@javascriptTop keepend oneline
 syn region vimperatorJavaScript matchgroup=vimperatorJavascriptDelimiter
-    \ start="\%(^\s*\%(javascript\|js\)\s\+\)\@<=<<\s*\z(\h\w*\)"hs=s+2 end="^\z1$" contains=@javascriptTop fold
+    \ start="\%(^\s*:\=\%(au\%(tocmd\)\=\s\+.\+\s\+-\=\)\=\%(javascript\|js\)\s*\)\@<=<<\s*\z(\h\w*\)"hs=s+2 end="^\z1$" contains=@javascriptTop fold
 
 let s:cssRegionStart = '\%(^\s*sty\%[le]!\=\s\+\%(-\%(n\|name\)\%(\s\+\|=\)\S\+\s\+\)\=[^-]\S\+\s\+\)\@<='
 execute 'syn region vimperatorCss start="' . s:cssRegionStart . '" end="$" contains=@cssTop keepend oneline'
